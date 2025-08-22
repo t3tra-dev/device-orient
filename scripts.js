@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctx = canvas.getContext("2d");
 
   let animationId = null;
-  // フィルタ後に描画へ渡す角度（連続値）
+  // フィルタ後に描画へ渡す角度 (連続値)
   let alpha = 0,
     beta = 0,
     gamma = 0;
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     rawBeta = event.beta ?? 0;
     rawGamma = event.gamma ?? 0;
 
-    // alpha の 0↔360 ラップを補正（最短差分）
+    // alpha の 0↔360 ラップを補正 (最短差分)
     if (prevRawAlpha == null) {
       contAlpha = rawAlpha;
     } else {
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     prevRawAlpha = rawAlpha;
 
-    // ローパス（指数移動平均）
+    // ローパス (指数移動平均)
     alpha += (contAlpha - alpha) * SMOOTHING;
     beta += (rawBeta - beta) * SMOOTHING;
     gamma += (rawGamma - gamma) * SMOOTHING;
@@ -140,11 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let rotationTime = 0;
 
     function animateStatic() {
-      // 自動回転で立方体を表示（正しい軸定義に従う）
+      // 自動回転で立方体を表示 (正しい軸定義に従う)
       rotationTime += 0.01;
-      const a = Math.sin(rotationTime) * 60; // Z軸回転（コンパス方向）
-      const b = Math.cos(rotationTime * 0.7) * 30; // X軸回転（前後傾き）
-      const g = Math.sin(rotationTime * 0.5) * 20; // Y軸回転（左右傾き）
+      const a = Math.sin(rotationTime) * 60; // Z軸回転 (コンパス方向)
+      const b = Math.cos(rotationTime * 0.7) * 30; // X軸回転 (前後傾き)
+      const g = Math.sin(rotationTime * 0.5) * 20; // Y軸回転 (左右傾き)
       alpha = a;
       beta = b;
       gamma = g; // フィルタ不要の擬似値
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // intrinsic Z->X->Y : R = Rz * Rx * Ry => quaternion同順で右積
     let q = quatMul(quatMul(qZ, qX), qY);
     q = quatNorm(q);
-    // ワールド固定表示: 逆回転 = 共役を使用（単位クォータニオンの逆）
+    // ワールド固定表示: 逆回転 = 共役を使用 (単位クォータニオンの逆)
     const qConj = [-q[0], -q[1], -q[2], q[3]];
 
     // クォータニオン -> 回転行列 (右手系)
@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "rgba(100, 255, 255, 0.8)", // 右面 - シアン
     ];
 
-    // 面を描画（Z座標でソート）
+    // 面を描画 (Z座標でソート)
     const facesWithDepth = faces.map((face, index) => {
       const avgZ =
         face.reduce((sum, vertexIndex) => {

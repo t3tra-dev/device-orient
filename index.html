@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeviceOrientation API Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- スタートシーン -->
+    <div id="start-scene" class="scene">
+      <div class="content">
+        <h1>DeviceOrientation API Demo</h1>
+        <p>
+          デバイスの傾きに応じて3D立方体が空間に固定されているように見えるデモです。
+        </p>
+        <button id="start-btn" class="start-button">開始</button>
+      </div>
+    </div>
+
+    <!-- キャンバスシーン -->
+    <div id="canvas-scene" class="scene hidden">
+      <canvas id="canvas" width="400" height="400"></canvas>
+      <div id="error-message" class="error hidden">
+        DeviceOrientation APIがサポートされていません
+      </div>
+      <button id="back-btn" class="back-button">戻る</button>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
